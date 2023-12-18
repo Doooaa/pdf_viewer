@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_viewer/home_layout.dart';
+import 'package:pdf_viewer/screens/login.dart';
 import 'package:pdf_viewer/screens/matarial.dart';
+import 'package:pdf_viewer/screens/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +17,11 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
        // home: , 
-       initialRoute: '/',  
+       initialRoute: 'login',  
         routes: {
           '/':(context) => HomeScreen(),
+          'login':(context) => login(),
+          'Reg':(context) => Reg(),
          // 'pdfScreen':(context)=>MatrialScreen()
         },
     );
