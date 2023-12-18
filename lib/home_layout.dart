@@ -32,33 +32,37 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          const Padding(
-          padding:  EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            // backgroundColor: Color.fromARGB(0, 52, 47, 47),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: CircleAvatar(
+                // backgroundColor: Color.fromARGB(0, 52, 47, 47),
 
-            backgroundImage: AssetImage('assets/images/cloud.png'),
-            radius: 40.0,
-          ),
-        ),
+                backgroundImage: AssetImage('assets/images/cloud.png'),
+                radius: 40.0,
+              ),
+            ),
             const SizedBox(
               height: 20,
             ),
             const Padding(
               padding: EdgeInsets.only(left: 20),
-              child: Text("Materials",style: TextStyle(
-                color: Colors.lightBlue,
-                fontWeight: FontWeight.w500,
-                fontSize: 24
-              ),),
+              child: Text(
+                "Materials",
+                style: TextStyle(
+                    color: Colors.lightBlue,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 24),
+              ),
             ),
             const Padding(
               padding: EdgeInsets.only(left: 20),
-              child: Text("discaver  your material with us ",style: TextStyle(
-                color: Colors.blueGrey,
-                fontWeight: FontWeight.w400,
-                fontSize: 16
-              ),),
+              child: Text(
+                "discaver  your material with us ",
+                style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16),
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -122,12 +126,14 @@ class GridItem extends StatelessWidget {
                   builder: (
                 context,
               ) =>
-                      MatrialDetialsScreen()));
+                      MatrialDetialsScreen(
+                        Gridindex: index,
+                      )));
         },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(22),
-            color: Color.fromARGB(255, 94, 167, 227),
+            color: const Color.fromARGB(255, 94, 167, 227),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

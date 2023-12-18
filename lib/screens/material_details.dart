@@ -1,17 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:pdf_viewer/home_layout.dart';
 import 'package:pdf_viewer/screens/matarial.dart';
+import 'package:pdf_viewer/screens/material_chapters.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class MatrialDetialsScreen extends StatelessWidget {
-  const MatrialDetialsScreen({super.key});
+  int Gridindex;
+  MatrialDetialsScreen({
+    Key? key,
+    required this.Gridindex,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("xxx"),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        titleSpacing: 10.0,
+        centerTitle: true,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+           color: Colors.lightBlue,
+          ),
+        ),
       ),
       body: Column(
+        
         children: [
+
+           Text(
+            " ${Materiales[Gridindex]['name']} ",
+            style:const TextStyle(
+                color: Colors.lightBlue,
+                fontWeight: FontWeight.w500,
+                fontSize: 24),
+          ),
+           SizedBox(height: 5,),
+          const Text(
+            "l'est go to discover our materials ",
+               style:  TextStyle(
+                color: Colors.blueGrey,
+                fontWeight: FontWeight.w400,
+                fontSize: 16),
+         
+          ),
+         SizedBox(height: 5,),
           Expanded(
             child: ListView.builder(
                 itemCount: 4,
@@ -20,10 +58,19 @@ class MatrialDetialsScreen extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (BuildContext context) {
-                          return MatrialScreen(pdf: ImageDetialesMateriales[index]['Pdf_navigate']!,);
-                        }));
+                        if (index == 0) {
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (BuildContext context) {
+                            return Chapters_Screen(
+                              Gridindex: Gridindex,
+                            );
+                          }));
+                        } else if (index == 1 || index == 2 || index == 3) {
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (BuildContext context) {
+                            return PdfScreen(pdf: 'assets/ch3.pdf');
+                          }));
+                        }
                       },
                       child: Container(
                         height: 100,
@@ -31,7 +78,8 @@ class MatrialDetialsScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                    ImageDetialesMateriales[index]['image']!),
+                                    ImageDetialesMateriales[Gridindex][index]
+                                        ['image']!),
                                 fit: BoxFit.cover),
                             color: Color.fromARGB(255, 56, 179, 161),
                             borderRadius: BorderRadius.circular(16)),
@@ -43,7 +91,8 @@ class MatrialDetialsScreen extends StatelessWidget {
                                 child: Padding(
                               padding: EdgeInsets.only(left: 45),
                               child: Text(
-                                ImageDetialesMateriales[index]['name']!,
+                                ImageDetialesMateriales[Gridindex][index]
+                                    ['name']!,
                                 style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w700,
@@ -63,22 +112,100 @@ class MatrialDetialsScreen extends StatelessWidget {
   }
 }
 
-List<Map<String, String>> ImageDetialesMateriales = [
-  {
-    'image': 'assets/images/book.jpg',
-    'name': "Subject Book",
-    'Pdf_navigate': 'assets/ch1.pdf',
-  },
-  {
-    'image': 'assets/images/quiz.jpg',
-    'name': "Quizes",
-  },
-  {
-    'image': 'assets/images/online.jpg',
-    'name': "Online Materials",
-  },
-  {
-    'image': 'assets/images/p1.jpg',
-    'name': "Flow Chart",
-  },
+List<List<Map<String, dynamic>>> ImageDetialesMateriales = [
+  [ // ml =0
+    {
+      'image': 'assets/images/book.jpg',
+      'name': "Subject Book",
+
+      //pdf: ImageDetialesMateriales[index]['Pdf_navigate']!,
+    },
+    {
+      'image': 'assets/images/quiz.jpg',
+      'name': "Quizes",
+      //'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+    {
+      'image': 'assets/images/online.jpg',
+      'name': "Online Materials",
+      'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+    {
+      'image': 'assets/images/p1.jpg',
+      'name': "Flow Chart",
+      'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+  ],
+
+  [ //data minning 2
+    {
+      'image': 'assets/images/book.jpg',
+      'name': "Subject Book",
+
+      //pdf: ImageDetialesMateriales[index]['Pdf_navigate']!,
+    },
+    {
+      'image': 'assets/images/quiz.jpg',
+      'name': "Quizes",
+      //'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+    {
+      'image': 'assets/images/online.jpg',
+      'name': "Online Materials",
+      'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+    {
+      'image': 'assets/images/p1.jpg',
+      'name': "Flow Chart",
+      'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+  ],
+
+  
+  [ //3 cloud
+    {
+      'image': 'assets/images/book.jpg',
+      'name': "Subject Book",
+
+      //pdf: ImageDetialesMateriales[index]['Pdf_navigate']!,
+    },
+    {
+      'image': 'assets/images/quiz.jpg',
+      'name': "Quizes",
+      //'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+    {
+      'image': 'assets/images/online.jpg',
+      'name': "Online Materials",
+      'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+    {
+      'image': 'assets/images/p1.jpg',
+      'name': "Flow Chart",
+      'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+  ],
+  [ //4 444
+    {
+      'image': 'assets/images/book.jpg',
+      'name': "Subject Book",
+
+      //pdf: ImageDetialesMateriales[index]['Pdf_navigate']!,
+    },
+    {
+      'image': 'assets/images/quiz.jpg',
+      'name': "Quizes",
+      //'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+    {
+      'image': 'assets/images/online.jpg',
+      'name': "Online Materials",
+      'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+    {
+      'image': 'assets/images/p1.jpg',
+      'name': "Flow Chart",
+      'navigate': PdfScreen(pdf: 'assets/ch3.pdf'),
+    },
+  ],
 ];
